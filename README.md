@@ -4,11 +4,17 @@
 ---
 The official source code for AdaOS Linux!
 
-Download the latest build here: https://github.com/Ada-OS-Linux/AdaOS-Source/actions/workflows/build_monthly.yml
+Download the latest build here: https://github.com/Ada-OS-Linux/AdaOS-Server-Source/actions/workflows/build_monthly.yml
 
 And/or: https://mega.nz/folder/3LBEGCRC#BuPC90U9fhtFyD547aXcXg
 
 Source Code Repository: https://source.adaoslinux.xyz/
+
+---
+
+# Cockpit
+
+Access Cockpit: https://localhost:9090/
 
 ---
 
