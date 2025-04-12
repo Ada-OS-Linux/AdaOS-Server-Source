@@ -17,7 +17,7 @@ set -e
 	sed -i -e 's|GNU/Linux|OS|g' /etc/os-release
 
 # Change installer icon & name to Ada
-	sed -i -e 's|Debian|Ada OS|g' /usr/share/applications/install-debian.desktop
+	sed -i -e 's|Debian|Ada OS Server|g' /usr/share/applications/install-debian.desktop
 
 # Remove un-needed packages
 	/usr/bin/apt purge -y firefox-esr
@@ -26,3 +26,6 @@ set -e
 # Setup flatpak
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	flatpak install org.mozilla.firefox/x86_64/stable -y
+
+# Enable services
+    systemctl enable cockpit.socket
