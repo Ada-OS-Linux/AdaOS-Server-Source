@@ -1,4 +1,4 @@
-name: ada-monthly-x86_64
+name: adaos-server-monthly-x86_64
 
 on:
   push:
