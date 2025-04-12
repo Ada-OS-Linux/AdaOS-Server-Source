@@ -36,8 +36,8 @@ cat <<EOF > "$WKDIR/$BLDDIR/config/archives/virtualbox.list.chroot"
 deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bookworm contrib
 EOF
 
-wget -q http://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | gpg --dearmor > "$WKDIR/$BLDDIR/config/archives/oracle-virtualbox.gpg"
-
+wget -q http://www.virtualbox.org/download/oracle_vbox.asc -O- | gpg --dearmor > "$WKDIR/$BLDDIR/config/archives/oracle-virtualbox.gpg"
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/oracle-virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib" > "$WKDIR/$BLDDIR/config/archives/virtualbox.list.chroot"
 
 # Install desktop and applications
 
