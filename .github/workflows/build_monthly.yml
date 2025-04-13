@@ -12,45 +12,22 @@ jobs:
   build:
     runs-on: ubuntu-22.04
 
-    container:
-      image: debian:latest
-      volumes:
-        - /proc:/proc
-      options: --privileged
-
     steps:
     - name: Get source
       uses: actions/checkout@v4
 
-    - name: Install base tools
+    - name: Install dependencies
       run: |
-        apt update -y
-        apt-get install -y live-build squashfs-tools syslinux-common syslinux-utils xorriso isolinux git curl gnupg2 lsb-release ca-certificates apt-transport-https software-properties-common
-
-    - name: Set up Docker
-      run: |
-        # Add Docker's official GPG key
-        install -m 0755 -d /etc/apt/keyrings
-        curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-        chmod a+r /etc/apt/keyrings/docker.gpg
-
-        # Add the Docker repository
-        echo \
-        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-        apt-get update -y
-        apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-        # Start Docker daemon manually (since it's not auto-started in containers)
-        dockerd > /var/log/dockerd.log 2>&1 &
-        sleep 10  # Wait a few seconds to ensure Docker starts
+        sudo apt update -y
+        sudo apt-get install -y \
+          live-build squashfs-tools syslinux-common syslinux-utils \
+          xorriso isolinux git curl flatpak
 
     - name: Build system
       run: |
-        ./build
+        chmod +x ./build
+        sudo ./build
         mv ada/ada-"$(date -u +%y%m%d)"-amd64.hybrid.iso ~/ada.iso
-        cd ../
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
