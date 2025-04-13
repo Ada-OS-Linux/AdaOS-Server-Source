@@ -3,13 +3,13 @@ componentName:   blade
 welcomeStyleCalamares: true
 
 strings:
-    productName:         Ada OS
+    productName:         Ada OS Server
     shortProductName:    Ada
     version:             12
     shortVersion:        12
     versionedName:       Ada OS (Internal)
     shortVersionedName:  Ada
-    bootloaderEntryName: Ada OS
+    bootloaderEntryName: Ada OS Server
     productUrl:          https://www.bladeos.xyz/
 #   supportUrl:          https://sourceforge.net/projects/eznixos/
 #   knownIssuesUrl:      https://sourceforge.net/projects/eznixos/
