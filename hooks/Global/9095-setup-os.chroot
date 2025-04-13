@@ -31,5 +31,5 @@ set -e
     systemctl enable cockpit.socket
 
 # Install CasaOS
-curl -fsSL https://get.casaos.io/ | sudo bash
+curl -fsSL https://get.casaos.io/ | bash
 
