@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Get source
+    - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Install dependencies
@@ -22,6 +22,11 @@ jobs:
         sudo apt-get install -y \
           live-build squashfs-tools syslinux-common syslinux-utils \
           xorriso isolinux git curl flatpak
+
+    - name: Start Docker daemon
+      run: |
+        sudo systemctl start docker
+        sudo docker info
 
     - name: Build system
       run: |
