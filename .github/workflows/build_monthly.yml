@@ -25,7 +25,7 @@ jobs:
 
     - name: Start Docker daemon
       run: |
-        sudo systemctl start docker
+        sudo service docker start
         sudo docker info
 
     - name: Build system
